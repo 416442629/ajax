@@ -51,7 +51,7 @@
 
       // 有一个独立的作用域，顺便确保页面加载完成执行
       $('.list-group-item').on('click',function(){
-        var url = $(this).attr('href')
+        var url = $(this).attr('href')   //获取点中元素的href属性 即 url
         $('#main').load(url + ' #main > *')
         return false
       })
