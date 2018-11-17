@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ajax 回调函数/委托</title>
+</head>
+<body>
+  <script>
+    function ajax(method,url,params,done){
+      method = method.toUpperCase()
+
+
+
+      var xhr = new XMLHttpRequest()
+
+      if(typeof params === 'object'){
+        var tempArr =[]
+        for (var key in params){
+          var value =params[key]
+          tempArr.push(key + '=' + value)
+        }
+        params = tempArr.join('&')
+      }
+      if(method === 'GET'){
+        url += '?' + params
+      }
+      xhr.open(method,url)
+      var data = null
+      if(method ==='POST'){
+        xhr.setRequstHeader('Content-Type','application/x-www-form-urlencode')
+        data = params
+      }
+      xhr.onreadystatechange = function(){
+        if(this.readyState !== 4) return
+          done(this.responseText)
+      }
+    xhr.send()
+
+      }
+
+      var onDone = function(res){
+        console.log(res)
+      }
+      ajax('get','test.php',{},onDone)
+
+  </script>
+  
+</body>
+</html>
