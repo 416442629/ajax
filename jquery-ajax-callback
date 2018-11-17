@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery中AJAX的回调</title>
+</head>
+<body>
+  <script src='jquery.js'>
+
+  </script>
+  <script>
+        $.ajax({
+      url:'json.php',
+      type:'get',
+      beforeSend:function(xhr){
+        console.log('beforeSend',xhr)
+      },
+      data:{
+        id:1,name:'张三'
+      },
+      dataType:'json',
+      success: function(res){
+        console.log(res)
+      },
+      error:function(xhr){
+        console.log('error',xhr)
+      },
+      complete:function(xhr){
+        console.log('complete',xhr)
+      }
+    })
+  </script>
+</body>
+</html>
