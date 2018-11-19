@@ -26,15 +26,7 @@
 
     // 为每一个请求创建一个唯一的函数
 
-    var funcName = 'haha_' + Date.now() + Math.random().toString().substr(2, 5)
-
-    var script = document.createElement('script')
-    script.src = 'http://localhost/jsonp/server.php?callback=' + funcName
-    document.body.appendChild(script)
-
-    window[funcName] = function (data) {
-      console.log('1111', data)
-    }
+   
 
 
     function jsonp (url, params, callback) {
